@@ -1,20 +1,25 @@
-import React from 'react'
-import buscar  from '../../assets/buscar.png';
+import React from "react";
+import logoutImg from "../../assets/logoutImg.png";
+import { logOut } from "../../lib/firebaseAuth";
+import { useNavigate } from "react-router-dom";
 
+export function Timeline() {
+  const navigate = useNavigate();
 
-//INGRESO FUNCION DE FIREBASE
+  const signOut = () => {
+    logOut();
+    navigate("/");
+  };
 
-export function AccesTimeline() {
   return (
-    
-   
-    <div>
-    <button className='btnGoogle'> LOGIN WHIT GOOGLE 
-        <img src= { buscar } className="google" alt="Google"/>
+    <div className="container">
+      <header className="title">
+        <h1> WRITE NOTES </h1>
+        <button className="btnLogout" onClick={signOut}>
+          <img src={logoutImg} className="exit" alt="Exit" />
         </button>
+      </header>
     </div>
-
   );
 }
-
-export default AccesTimeline;
+export default Timeline;
