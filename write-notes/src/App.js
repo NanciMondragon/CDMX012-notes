@@ -5,9 +5,10 @@ import { Timeline } from "./components/noautenticate/Timeline";
 import { Home } from "./components/autenticate/Home";
 import { loginWithGoogle } from "./lib/firebaseAuth";
 import { logOut } from "./lib/firebaseAuth";
-import "./App.css";
+import "./App.css"
 import NotFound from "./components/noautenticate/NotFound";
 import { auth, onAuthStateChanged } from "./lib/firebase";
+import "./components/Feed/NewNote.css";
 
 
 export function App() {
@@ -23,7 +24,6 @@ export function App() {
       }
     });
   }, []) 
-
   
 console.count(isAutenticate);
   return (
