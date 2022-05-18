@@ -4,6 +4,7 @@ import write from '../../assets/write.jpeg'
 import { auth, provider } from '../../lib/firebase';
 import { loginWithGoogle } from '../../lib/firebaseAuth';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 
 export function Home() {
   const navigate = useNavigate();
@@ -23,11 +24,7 @@ export function Home() {
         <img src= { buscar } className="google" alt="Google"/>
         </button>
 
-        <div className='footer'>
-        <h4>Write Notes Copyright 2022 by Nanci Mondragón <a class="gitHubLogo" href="https://github.com/NanciMondragon"
-           ><i class="fa-brands fa-github"></i> </a></h4>
-        </div>
-          
+      <Footer></Footer>
     </div>
   )
   

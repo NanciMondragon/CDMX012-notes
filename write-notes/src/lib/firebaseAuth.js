@@ -13,7 +13,6 @@ export const loginWithGoogle = (auth, provider, navigate) => {
       // The signed-in user info.
       const user = result.user;
       navigate("/timeline");
-
       // ...
     })
     .catch((error) => {
