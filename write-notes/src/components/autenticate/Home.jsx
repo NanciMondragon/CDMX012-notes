@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import buscar  from '../../assets/buscar.png';
 import write from '../../assets/write.jpeg'
 import { auth, provider } from '../../lib/firebase';
 import { loginWithGoogle } from '../../lib/firebaseAuth';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../Footer/Footer';
+import Footer from '../Feed/Footer';
 
 export function Home() {
   const navigate = useNavigate();

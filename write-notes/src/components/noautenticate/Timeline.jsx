@@ -6,6 +6,7 @@ import Footer from '../Feed/Footer';
 import NewNotes from "../Feed/NewNotes";
 
 
+
 export function Timeline() {
   const navigate = useNavigate();
 
@@ -15,18 +16,24 @@ export function Timeline() {
   };
 
   return (
-    <div className="container">
-      <header className="title">
-        <h1> WRITE NOTES </h1>
-        <button className="btnLogout" onClick={signOut}>
-          <img src={logoutImg} className="exit" alt="Exit" />
-        </button>
-      </header>
+    <>
+      <div>
+        <header className="title">
+          <h1> WRITE NOTES </h1>
+          <button className="btnLogout" onClick={signOut}>
+            <img src={logoutImg} className="exit" alt="Exit" />
+          </button>
+        </header>
 
-      <NewNotes></NewNotes>
-      <Footer></Footer>
-      
-    </div>
+        <div className="notes">
+        <section className="notesSection">
+          <NewNotes />
+        </section>
+        </div>
+
+        <Footer />
+      </div>
+    </>
   );
 }
 export default Timeline;

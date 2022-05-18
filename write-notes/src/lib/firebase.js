@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 export { 
   GoogleAuthProvider, 
@@ -11,10 +11,8 @@ export {
   getFirestore,
   collection,
   addDoc,
-
+  getDocs,
  }
-
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
