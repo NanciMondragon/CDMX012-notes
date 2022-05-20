@@ -19,14 +19,12 @@ export function Timeline() {
     <>
       <div>
         <header className="title">
-          <h1> WRITE NOTES </h1>
-          <button className="btnLogout" onClick={signOut}>
-            <img src={logoutImg} className="exit" alt="Exit" />
-          </button>
+          <h1> WRITE NOTES </h1> 
+            <img className="btnLogout" src={logoutImg} alt="Exit" onClick={signOut}/>
         </header>
 
-        <div className="notes">
-        <section className="notesSection">
+        <div>
+        <section>
           <NewNotes />
         </section>
         </div>

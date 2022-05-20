@@ -60,8 +60,8 @@ h1 {
   left: 1300px;
   top: 15px;
   background-color: #E75956;
-  width: 128px;
-  height: 48px;
+  width: 45px;
+  height: 40px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -105,15 +105,13 @@ h1 {
     align-items: center;
   }
 
-
-
   .btnLogout {
     position: absolute;
-    left: 690px;
+    left: 650px;
     top: 20px;
     background-color: #E75956;
-    width: 75px;
-    height: 48px;
+    width: 45px;
+    height: 40px;
   }
 
   .not {
