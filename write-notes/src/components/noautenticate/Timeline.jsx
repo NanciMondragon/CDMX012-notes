@@ -15,19 +15,23 @@ export function Timeline() {
     navigate("/");
   };
 
+
+
+
+
   return (
     <>
       <div>
-        <header className="title">
-          <h1> WRITE NOTES </h1> 
-            <img className="btnLogout" src={logoutImg} alt="Exit" onClick={signOut}/>
+          <header className="title">
+          <h1> WRITE NOTES </h1>
+          <img className="btnLogout" src={logoutImg} alt="Exit" onClick={signOut} />
         </header>
 
-        <div>
+
         <section>
           <NewNotes />
         </section>
-        </div>
+
 
         <Footer />
       </div>
