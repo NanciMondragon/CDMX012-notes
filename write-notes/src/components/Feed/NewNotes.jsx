@@ -14,38 +14,45 @@ function NewNotes() {
   const [notes, setNotes] = useState([]);
   const notesCollectionRef = collection(db, "notes");
 
+  const getNotes = async () => {
+    const q = query(notesCollectionRef, orderBy("date", "desc"));
+    const data = await getDocs(q, { includeMetadataChanges: true });
+    const notesArray = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    //console.log (notesArray)
+    return notesArray
+  }
+
+
 
   const createNote = async (e) => {
     e.preventDefault()
     const user = auth.currentUser;
     const date = new Date();
-    await addDoc(notesCollectionRef, { 
+    await addDoc(notesCollectionRef, {
       uid: user.uid,
       ID: notesCollectionRef.id,
       email: user.email,
       username: user.displayName,
-      id:user.photoURL,
+      id: user.photoURL,
       date,
-      title: newTitle, 
-      description: newDescription 
+      title: newTitle,
+      description: newDescription
     });
+    
+    getNotes().then ((notesArray) =>{
+      setNotes(notesArray)
+    })
+
   };
-  
 
   useEffect(() => {
+   
+    getNotes().then ((notesArray) =>{
+      setNotes(notesArray)
+    })
 
-    
-      const getNotes = async () => {
-        const q = query(notesCollectionRef, orderBy("title", "desc"));
-        const data = await getDocs(q,  { includeMetadataChanges: true });
-        setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
-      }
-
-      getNotes()
-
-// eslint-disable-next-line
-}, [])
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>
@@ -57,7 +64,7 @@ function NewNotes() {
           <textarea className='writeNoteCss' placeholder='Write your note' onChange={(event) => {
             setNewDescription(event.target.value);
           }}></textarea>
-          <button className='btnCreate' type="submit"> Create note </button>
+          <button className='btnCreate' type="submit" > Create note </button>
         </form>
       </div>
 
