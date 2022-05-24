@@ -18,7 +18,7 @@ export function App() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setAutenticate(user);
-        console.log(user);
+        //console.log(user);
       } else {
         setAutenticate(null);
       }
