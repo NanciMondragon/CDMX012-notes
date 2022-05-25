@@ -6,7 +6,7 @@ import { Home } from "./components/autenticate/Home";
 import { loginWithGoogle } from "./lib/firebaseAuth";
 import { logOut } from "./lib/firebaseAuth";
 import "./App.css"
-import NotFound from "./components/noautenticate/NotFound";
+//import NotFound from "./components/noautenticate/NotFound";
 import { auth, onAuthStateChanged } from "./lib/firebase";
 import "./components/Feed/NewNote.css";
 
@@ -33,7 +33,7 @@ console.count(isAutenticate);
       ) : (
         <>
           <Route path="/" element={<Home loginGoogle={loginWithGoogle} />} />
-          <Route path="*" element={<NotFound />} />
+          {/*<Route path="*" element={<NotFound />} /> */}
         </>
       )}
     </Routes>
