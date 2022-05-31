@@ -1,16 +1,17 @@
 // eslint-disable-next-line
 import { useEffect, useState } from "react";
 import { db, auth, } from "../../lib/firebase";
-import { collection, getDocs, addDoc, } from "../../lib/firebase";
+import { collection, addDoc, } from "../../lib/firebase";
 import delet from "../../assets/delet.png";
 import pencil from "../../assets/pencil.png"
-import { query, orderBy, doc, deleteDoc } from "firebase/firestore";
+import { query, orderBy, doc, deleteDoc, where, serverTimestamp, getDocs, } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
-
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
+
+
+//const username = auth.currentUser.displayName;
 
 
 function NewNotes() {
@@ -23,18 +24,11 @@ function NewNotes() {
   const [notes, setNotes] = useState([]);
   const notesCollectionRef = collection(db, "notes");
 
-  const getNotes = async () => {
-    const q = query(notesCollectionRef, orderBy("date", "desc"));
-    const data = await getDocs(q, { includeMetadataChanges: true });
-    const notesArray = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    //console.log (notesArray)
-    return notesArray
-  }
-
+ 
   const createNote = async (e) => {
     e.preventDefault()
     const user = auth.currentUser;
-    const date = new Date();
+    const date = serverTimestamp();
     await addDoc(notesCollectionRef, {
       uid: user.uid,
       ID: notesCollectionRef.id,
@@ -46,12 +40,22 @@ function NewNotes() {
       description: newDescription
     });
 
-    getNotes().then((notesArray) => {
-      setNotes(notesArray)
-    })
-
   };
-  //const deleteNote = async (id) => await deleteDoc(doc(db, 'posts', id));
+  
+  const getNotes = async () => {
+    const user = auth.currentUser.email;
+    if (user) {
+      const querySnapshot = await getDocs(query(notesCollectionRef, orderBy('date', 'desc'), where('email', "==", user)));
+      setNotes(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      //console.log(notes)
+    }
+  }
+
+  useEffect(() => {
+
+    getNotes();
+    // eslint-disable-next-line
+  }, [])
 
   const deleteNote = async (id) => {
     const noteDoc = doc(db, "notes", id)
@@ -62,7 +66,6 @@ function NewNotes() {
   //Sweet para eliminar nota
   const deleteNoteDoc = (id) => {
     MySwal.fire({
-      title: 'Are you sure?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -83,18 +86,16 @@ function NewNotes() {
 
   }
 
-  useEffect(() => {
-
-    getNotes().then((notesArray) => {
-      setNotes(notesArray)
-    })
-
-    // eslint-disable-next-line
-  }, [])
 
   return (
     <>
       <div>
+
+        {/*<section className='welcome'>
+          <h2>Hello, {username} </h2>
+          <h2>Welcome to your notes!! </h2>
+  </section>*/}
+
         <form className='general' onSubmit={createNote}>
           <input className='titleCss' placeholder='Title' onChange={(event) => {
             setNewTitle(event.target.value);

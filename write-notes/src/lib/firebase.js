@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, where, onSnapshot, serverTimestamp } from "firebase/firestore";
 
 export { 
   GoogleAuthProvider, 
@@ -14,6 +14,9 @@ export {
   getDocs,
   deleteDoc,
   doc,
+  serverTimestamp,
+  where,
+  onSnapshot,
   
  }
 
@@ -35,3 +38,9 @@ export const provider = new GoogleAuthProvider();
 
 // Initialize Firestore
 export const db = getFirestore(app);
+
+export const getUser = () => {
+  const user = auth.currentUser;
+  // const userName = user.displayName;
+  return user;
+}

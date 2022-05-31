@@ -102,4 +102,14 @@ p {
     left: 400px;  
 }
 
+.welcome{
+    margin: 10px;
+    padding: 15px;
+}
+
+h2{
+    font-family: 'Habibi';
+    font-size: 20px;
+}
+
 
