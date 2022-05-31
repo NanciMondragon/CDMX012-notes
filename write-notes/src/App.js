@@ -9,6 +9,7 @@ import "./App.css"
 import NotFound from "./components/noautenticate/NotFound";
 import { auth, onAuthStateChanged } from "./lib/firebase";
 import "./components/Feed/NewNote.css";
+import EditNote from "./components/Feed/EditNote";
 
 
 export function App() {
@@ -29,7 +30,11 @@ console.count(isAutenticate);
   return (
     <Routes>
       {isAutenticate ? (
+        <>
         <Route path="/timeline" element={<Timeline signOut={logOut} />} />
+        <Route path="/edit/:id" element={<EditNote signOut={logOut} />} />
+        </>
+
       ) : (
         <>
           <Route path="/" element={<Home loginGoogle={loginWithGoogle} />} />
