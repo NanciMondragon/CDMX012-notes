@@ -30,6 +30,8 @@
     font-family: 'Habibi';
     font-style: normal;
     font-size: 30px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 
@@ -90,6 +92,8 @@ p {
     border-radius: 10px;
     width: 429px;
     height: 200px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .btnDelet{
