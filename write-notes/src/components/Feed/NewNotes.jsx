@@ -6,10 +6,8 @@ import delet from "../../assets/delet.png";
 import pencil from "../../assets/pencil.png"
 import { query, orderBy, doc, deleteDoc, where, serverTimestamp, getDocs, } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-//import EditNote from '../Feed/EditNote'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import EditNote from "./EditNote";
 const MySwal = withReactContent(Swal)
 
 
