@@ -10,8 +10,7 @@
 
 ## 1. Resumen del Proyecto
 
-Esgit  una aplicación para tomar notas, que nos permite
-crear, editar, eliminar y consultarlas en cualquier momento. La interfaz web se construyo usando la librería de React, es _Single Page App_.
+Es una aplicación para tomar notas, que nos permite crear, editar, eliminar y consultarlas en cualquier momento. La interfaz web se construyo usando la librería de React, es _Single Page App_.
 
 ## 2. Criterios de aceptación mínimos del proyecto
 
